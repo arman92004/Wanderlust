@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerplate") %>
+    <%# to use layout %>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <br><br>
+                <h3>Create a new Listing</h3>
+                <form  action="/listings" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="listing[title]" class="form-control" required placeholder="Add a catchy title">
+                        <%# by writing name in this way we make an object listing with key title %>
+                        <div class="valid-feedback">
+                           Title looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Oops! you entered an invalid title
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="decsription" class="form-label">Description</label>
+                        <textarea name="listing[description]" id="" cols="30" rows="10" required class="form-control"></textarea>
+                        <div class="invalid-feedback">
+                            Oops! you entered an invalid description
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload Image</label>
+                        <input type="file" name="listing[image]" required class="form-control" >
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" required  name="listing[price]" class="form-control">
+                            <div class="invalid-feedback">
+                                Oops! you entered an invalid price
+                              </div>
+                        </div>
+                        <div class="mb-3 col-md-8">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" name="listing[country]" class="form-control" required  placeholder="India">
+                            <div class="invalid-feedback">
+                                Oops! you entered an invalid country
+                              </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="listing[location]" class="form-control"  required placeholder="Jaipur,Rajasthan">
+                        <div class="invalid-feedback">
+                            Oops! you entered an invalid location
+                          </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-dark add-btn">Add</button><br><br>
+                </form>
+            </div>
+        </div>
