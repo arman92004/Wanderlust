@@ -32,6 +32,11 @@ router
 
 
 router
+    .route("/filter/:category")
+    
+    .get(listingController.filter) ;
+
+router
     .route("/:id") 
     //show route
     .get(wrapAsync(listingController.showListing))
