@@ -12,6 +12,24 @@ module.exports.filter = async (req,res)=>{
     console.log(allListings);
     res.render("listings/index.ejs", { allListings });
 }
+module.exports.search = async (req, res) => {
+    const { query } = req.query;
+    const regexPattern = `.*${query.split('').join('.*')}.*`;
+    try {
+        const allListings = await Listing.find({ 
+            $or: [
+                { title: { $regex: regexPattern, $options: 'i' } },   
+                { location: { $regex: regexPattern, $options: 'i' } }, 
+                { country: { $regex: regexPattern, $options: 'i' } } , 
+                { category: { $regex: regexPattern, $options: 'i' } } 
+            ]        });
+        console.log(allListings);
+        res.render("listings/index.ejs", { allListings });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred while searching.");
+    }
+};
 
 module.exports.renderNewForm = (req, res) => { 
     console.log(req.user)

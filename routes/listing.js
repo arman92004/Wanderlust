@@ -30,7 +30,9 @@ router
     // Create route get request
     .get(isLoggedIn, listingController.renderNewForm); // isLoggedin 
 
-
+router
+    .route("/search")
+    .get(listingController.search)
 router
     .route("/filter/:category")
     
